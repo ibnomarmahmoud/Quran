@@ -44,7 +44,7 @@ new_surat['number_of_pages'] = new_surat['end']-new_surat['start']+1
 
 def main():
     # Read the Users CSV file into dataframes 
-    users = pd.read_csv(r"C:\Users\emahoma\Downloads\Quran_Python\Quran\Users.csv")
+    users = pd.read_csv("./Users.csv")
 
     # Itrate over the file
 
@@ -66,26 +66,26 @@ def main():
     
 
         # Send the Salam Message
-        my_file = open(r"C:\Users\emahoma\Downloads\Quran_Python\Quran\Local_Pics/Salam.gif", "rb")
+        my_file = open("./Salam.gif", "rb")
         caption_Salam = "هنيئا لكم مداومة حفظ كتاب الله .... استعينوا بالله و اصبروا"
         parameters = {    "chat_id" : chat_id,    "caption" : caption_Salam     }
         files = { "photo" : my_file}
         requests.get(base_url_photo, data = parameters, files=files)
         
         # Send the Daily Intro Surat Name 
-        my_file = open(r"C:\Users\emahoma\Downloads\Quran_Python\Quran\Local_Pics/Daily.JPG", "rb")
+        my_file = open("./Daily.JPG", "rb")
         caption_Intro = Date+" " +Month+" "+str(d3)
         parameters = {    "chat_id" : chat_id,    "caption" : caption_Intro     }
         files = { "photo" : my_file}
         requests.get(base_url_photo, data = parameters, files=files)
         
         # Send the Surat Name
-        file_base=r"C:\Users\emahoma\Downloads\Quran_Python\Quran\Local_Pics/"
-        file=file_base+str(user_surat.id[0])+"Intro_new.JPG"
-        my_file = open(file, "rb")
-        parameters = {    "chat_id" : chat_id}
-        files = { "photo" : my_file}
-        requests.get(base_url_photo, data = parameters, files=files)
+        #file_base=r"C:\Users\emahoma\Downloads\Quran_Python\Quran\Local_Pics/"
+        #file=file_base+str(user_surat.id[0])+"Intro_new.JPG"
+        #my_file = open(file, "rb")
+        #parameters = {    "chat_id" : chat_id}
+        #files = { "photo" : my_file}
+        #requests.get(base_url_photo, data = parameters, files=files)
         '''
         # Send the Personalized Message 
         message = " السلام عليكم و رحمة الله و بركاته ... هنيئا لكم مداومة حفظ كتاب الله "
@@ -102,7 +102,7 @@ def main():
     
         users.iloc[i]['Current_Page']+=1
         users.iloc[i]['Current_mp3']+=1
-        users.to_csv(r"C:\Users\emahoma\Downloads\Quran_Python\Quran\Users.csv",index=False)
+        users.to_csv("./Users.csv",index=False)
 
 main()
 
