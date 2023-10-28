@@ -49,7 +49,9 @@ def main():
     # Itrate over the file
 
     for i in range(0, len(users)):
-        if users.iloc[i]['Current_Page']>99:
+        if users.iloc[i]['Current_Page']<10:
+            Current_Page,Current_mp3 = "00"+str(users.iloc[i]['Current_Page']),"00"+str(users.iloc[i]['Current_mp3'])
+        elif users.iloc[i]['Current_Page']>99:
             Current_Page,Current_mp3 = str(users.iloc[i]['Current_Page']),str(users.iloc[i]['Current_mp3'])
         else:
             Current_Page,Current_mp3 = "0"+str(users.iloc[i]['Current_Page']),"0"+str(users.iloc[i]['Current_mp3'])
@@ -65,12 +67,13 @@ def main():
         parameters_photo = {    "chat_id" : chat_id ,    "photo" : photo_id ,    "caption" : caption   }
     
 
+        #
         # Send the Salam Message
-        my_file = open("./Salam.gif", "rb")
-        caption_Salam = "هنيئا لكم مداومة حفظ كتاب الله .... استعينوا بالله و اصبروا"
-        parameters = {    "chat_id" : chat_id,    "caption" : caption_Salam     }
-        files = { "photo" : my_file}
-        requests.get(base_url_photo, data = parameters, files=files)
+        #my_file = open("./Salam.gif", "rb")
+        #caption_Salam = "هنيئا لكم مداومة حفظ كتاب الله .... استعينوا بالله و اصبروا"
+        #parameters = {    "chat_id" : chat_id,    "caption" : caption_Salam     }
+        #files = { "photo" : my_file}
+        #requests.get(base_url_photo, data = parameters, files=files)
         
         # Send the Daily Intro Surat Name 
         my_file = open("./Daily.JPG", "rb")
@@ -86,6 +89,7 @@ def main():
         #parameters = {    "chat_id" : chat_id}
         #files = { "photo" : my_file}
         #requests.get(base_url_photo, data = parameters, files=files)
+        
         '''
         # Send the Personalized Message 
         message = " السلام عليكم و رحمة الله و بركاته ... هنيئا لكم مداومة حفظ كتاب الله "
