@@ -1,0 +1,15 @@
+tasks:
+  - name: Python
+    before: |
+      cd /workspace/Quran/main
+      pip install -r requirements.txt
+      ./bin/terraform-install
+      ./bin/generate_tf_credentials
+      cd /workspace/terraform-beginner-bootcamp-2023 ; cp terraform.tfvars.example terraform.tfvars
+      source ./bin/build_provider
+vscode:
+  extensions:
+    - ms-toolsai.jupyter
+    - ms-toolsai.vscode-jupyter-slideshow
+    - ms-python.python
+    - mcright.auto-save
